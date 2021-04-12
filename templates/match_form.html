@@ -1,0 +1,126 @@
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    input[type=text],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+    input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .col-25 {
+      float: left;
+      width: 25%;
+      margin-top: 6px;
+    }
+
+    .col-75 {
+      float: left;
+      width: 75%;
+      margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+
+      .col-25,
+      .col-75,
+      input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <form method= "POST">
+      {% csrf_token %}
+      {{form}}
+      <label for="team_1">Team 1</label>
+
+      <select name="team_1" id="team_1">
+        {% for team in teams %}
+        <option value="{{team.id}}">{{ team }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="team_2">Team 2</label>
+
+      <select name="team_2" id="team_2">
+        {% for team in teams %}
+        <option value="{{team.id}}">{{ team }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="server">Choose a server:</label>
+
+      <select name="server" id="server">
+        {% for server in servers %}
+        <option value="{{server.id}}">{{ server }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <br>
+
+      <div class="row">
+        {% if update %}
+        <a href="{% url 'delete_match' idd object.id %}" style="color: red;">Delete Match</a>
+        {% endif%}
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>
+
+</div>
+{% endblock %}

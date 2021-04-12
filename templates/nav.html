@@ -1,0 +1,30 @@
+{% load static %}
+{% block content %}
+<nav>
+   
+    <div class="logo">
+        <a href="/"><img src="{% static '../static/images/logo.png'%} " height="60px" width="60px" alt=""></a>
+        <h5>&nbsp;&nbsp;SouTM</h5>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/tournaments/">Tournaments</a></li>
+       
+     
+        {% if user.is_authenticated %}
+        <li><a href="#">{{user.ign}}</a></li>
+        <li><a href="/logout/">Logout</a></li>
+        {% else %}
+        <li><button type="button" onclick="location.href = '/login/'" class="button signin">Log in</button></li>
+        <li><button type="button" onclick="location.href = '/signup/'" class="button signup">Sign up</button>
+        </li>
+        {% endif %}
+    </ul>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+
+</nav>
+{% endblock %}

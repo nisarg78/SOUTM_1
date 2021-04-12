@@ -1,0 +1,136 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: #0A0E26;
+  font-family: 'Poppins', sans-serif;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+
+
+.burninglogo {
+  position: absolute;
+  bottom: 520px;
+  height: 115px;
+  width: 115px;
+  }
+
+.hearderset {
+  padding-top: 350px;
+  box-sizing: border-box;
+  align-content: center;
+  width: 500px;
+}
+
+.bgcolor {
+
+  padding-bottom: 20px;
+  background-color:white;
+  
+  letter-spacing: 2px;
+}
+
+.icon {
+  padding-right: 5px;
+  size: 10px;
+}
+
+.et_pb_section {
+  padding-top: 54px;
+  padding-right: 20px;
+  padding-bottom: 54px;
+  padding-left: 20px;
+  background: transparent;
+}
+.et_pb_section {
+  background:transparent;
+}
+
+div.et_pb_section.et_pb_section_1 {
+  background: transparent;
+}
+.row {
+  color: white;
+}
+.text-sm {
+  padding-top: 100px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.underline {
+  color: white;
+  size: 50%;
+  line-height: 10%;
+}
+.textli {
+  padding-top: 20px;
+  padding-left: 150px;
+  padding-bottom: 30px;
+}
+.textio {
+  padding-top: 20px;
+  padding-left: 150px;
+  padding-bottom: 30px;
+}
+.textpi {
+  padding-top: 20px;
+  padding-left: 150px;
+  padding-bottom: 30px;
+}
+.textvl {
+  padding-top: 20px;
+  padding-left: 150px;
+  padding-bottom: 30px;
+}
+
+#main-footer {
+    background-color: #222;
+  }
+  #footer-bottom {
+    background-color: #1f1f1f;
+    background-color: rgba(0, 0, 0, 0.32);
+    padding: 15px 0 5px;
+  }
+  #footer-bottom a {
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  #footer-info {
+    text-align: left;
+    color: white;
+    padding-bottom: 10px;
+    float: left;
+  }
+  #footer-info a {
+    font-weight: 700;
+    color: white;
+  }
+  #footer-info a:hover {
+    opacity: 0.7;
+  }
+  .et-social-icons a {
+    font-size: 14px;
+  }
+  .et-social-icons a:hover {
+    opacity: 0.7;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  .et-social-icons li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  .et-social-icons {
+    float: right;
+  }
+  .icon{
+      color: white;
+      size: 30px;
+  }

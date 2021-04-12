@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
+    <link rel="stylesheet" href="{% static '../static/css/cards.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>{{ title }}</title>
+
+</head>
+
+<body>
+    <haeder>
+        <nav>
+            <div class="logo">
+                <a href="/"><img src="{% static '../static/images/logo.png'%}" height="60px" width="60px" alt=""></a>
+                <h5>&nbsp;&nbsp;SouTM</h5>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tournaments/">Tournaments</a></li>
+              
+                {% if user.is_organizer %}
+                {% if Hosted %}
+                <li><a href="{% url 'tournament' tourna_id %}">Your Tournament</a></li>
+                {% else %}
+                <li><a href="/tournament/new">Host</a></li>
+                {% endif %}
+                {% else %}
+                {% endif %}
+             
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'user' user.id %}">{{user.ign}}</a></li>
+                <li><a href="/logout/">Logout</a></li>
+                {% else %}
+                <li><button type="button" onclick="location.href = '/login/'" class="button signin">Log in</button></li>
+                <li><button type="button" onclick="location.href = '/signup/'" class="button signup">Sign up</button>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+
+        </nav>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+        <script src="{% static '../static/js/app.js'%}"></script>
+</body>
+
+</html>

@@ -1,0 +1,523 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+ 
+    -webkit-font-smoothing: antialiased;
+
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    width: 100%;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+    background-color: transparent;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: transparent;
+    
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 5px;
+    background-color: transparent;
+    color: white;
+
+    
+}
+.fl-table tr{
+    background-color: transparent;
+   
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 16px;
+    background-color: transparent;
+   
+}
+.fl-table thead {
+    background-color: transparent;
+    
+}
+
+
+.fl-table thead th{
+    color: #ffffff;
+    background: #0A0E26;
+
+}
+
+.fl-table tbody{
+    background-color: transparent;
+}
+
+
+/* Responsive */
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+        white-space: normal;
+    }
+    .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead,
+    .fl-table tbody,
+    .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child {
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td,
+    .fl-table th {
+        padding: 20px 0.625em 0.625em 0.625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr {
+        background: transparent;
+    }
+    .fl-table tr td {
+        background: transparent;
+        border-right: 1px solid #e6e4e4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+    .open-button {
+        background-color: transparent;
+        color: white;
+        padding: 16px 20px;
+        cursor: pointer;
+        text-decoration: underline;
+        border: 0.5px solid whitesmoke;
+        position: relative;
+        overflow: hidden;
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        padding: 1rem 3rem;
+        color: white;
+        text-transform: uppercase;
+
+    }
+
+    .open-button:hover {
+        box-shadow: 1px 1px 25px 10px rgba(250, 250, 250, 0.4);
+    }
+
+
+    .form-popup {
+        display: none;
+        background-color: transparent;
+      
+ 
+        z-index: 9;
+    }
+    h1{
+        background-color: transparent;
+    }
+    b{
+        background-color: transparent;
+    }
+
+    .form-container {
+        display: flex;
+        width: 300px;
+        padding: 10px;
+        background-color: transparent;
+    }
+
+
+    .form-container input[type=text],
+    .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    .form-container .btn {
+
+        background-color: #0A0E26;
+        color: white;
+        padding: 17px 20px;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        height: 100%;
+      
+        opacity: 0.8;
+    }
+
+
+    .form-container .btn:hover,
+    .open-button:hover {
+        opacity: 1;
+    }
+
+  
+
+    .btn {
+        text-decoration: none;
+        border: 0.5px solid whitesmoke;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(250, 250, 250, 0.4);
+    }
+   
+</style>
+<div class="tournament-main">
+    <div class="temp">
+        <div class="tournament-header">
+            {% if object.organizer == user %}
+
+            <a href='update'
+                style="position: absolute; top: 30px; right: 30px; text-decoration: underline 1px; background:transparent; color: white; font-size:20px;">Edit</a>
+            {% if object.is_feat == False %}
+            <a href='feat'
+                style="position: absolute; top: 90px; right: 30px; text-decoration: underline 1px; background:transparent; color: white; font-size:20px;">Get
+                featured </a>
+            {% endif %}
+            {% endif %}
+            <br>
+            <br><br>
+            <br><br><br><br><br><br><br><br><br><br>
+            <img src="{{ object.logo.url }}" alt="">
+            <br>
+            <h1 class="bgcolor bg-transparent">{{ object.name }}</h1>
+            <p class="bgcolor bg-transparent">Orgonized by: {{ object.organizer}} </p>
+            <p class="bgcolor bg-transparent">Description: {{ object.description }}</p>
+            <p class="bgcolor bg-transparent">Number of Team registered: {{ object.teams.count}}</p>
+            {% if object.winner %}
+            <p class="bgcolor bg-transparent">Winner: {{ object.winner }}</p>
+            {% else %}
+            <p class="bgcolor bg-transparent">Registration starts: {{ object.registration_starts}} // Registration ends:{{ object.registration_ends}}</p>
+
+            <p class="bgcolor bg-transparent">Tournament starts: {{ object.tournament_starts}} // Tournament ends: {{object.tournament_ends}} </p>
+            {% endif %}
+
+            <p class="bgcolor bg-transparent">Prizepool: ₹{{ object.prizepool}} </p>
+            <p class="bgcolor bg-transparent">Contact Number: {{ object.contact_no}} </p>
+            <p class="bgcolor bg-transparent">Contact Email: {{ object.contact_email}} </p>
+            <p class="bgcolor bg-transparent"> Status: {{ status }}</p>
+            {% if status == "Registration started" %}
+
+            {% if user.is_authenticated %}
+            
+            <button type="button" onclick="location.href = '/register/'" class="button register">Register</button>
+            {% else %}
+            <button type="button" onclick="location.href = '/login/'" class="button register">Register</button>
+            {% endif %}
+
+            {% endif %}
+        </div>
+
+        <br><br><br><br><br><br><br><br><br><br>
+        {% if object.banner.url %}
+        <br><br><br><br><br><br>
+        <div class="banner">
+            <img src="{{ object.banner.url }}" alt="">
+        </div>
+        {% endif %}
+        <br>
+        <br><br><br>><br>
+
+        <div class="team-matches">
+            
+            <h1 class="bgcolor bg-transparent"
+                style="background:transparent; color:white; letter-spacing: 2px; padding-bottom: 50px;">Teams registered
+            </h1>
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>Team Name</th>
+                            <th>Tag</th>
+                            <th> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+                            <th> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+                            <th>Players</th>
+                            <th> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+                            <th> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+                        </tr>
+                    </thead>
+                    
+
+           
+                    {%for team in object.teams.all %}
+                    <tr>
+                        <td><a href="{%url 'team' team.id %}">{{ team.name }}</a></td>
+                        <td>{{ team.tag }}</td>
+                        {%for player in team.players.all %}
+                        
+                        <td><a href="{%url 'user' player.id %}">{{ player }}</a></td>
+                    {% endfor %}
+                    {% endfor %}
+            
+        </tr>
+        <tbody>
+        </table>
+    </div>
+        </div>
+        <br>
+        <br><br><br><br>
+        <div class="team-matches" style = 'width: 100%;'>
+
+
+            <h1 class="bgcolor bg-transparent"
+                style="background:transparent; color:white; letter-spacing: 2px; padding-bottom: 50px;">Matches</h1>
+            
+            {% if tournament.teams_left.all|length == 0 %}
+            <a style= "font-size: 24px;" href="{% url 'first_matches' object.id %}"
+            onclick="return confirm('Are you sure? Your old match list will be delete.')">Randomize First batch of Matches</a>
+
+            {% else %}
+            {% if flag %}
+            <a style= "font-size: 24px;" href="{% url 'next_round' object.id %}"
+                onclick="return confirm('Do you want to proceed to the next round?')">Next Round</a>
+            {% else %}
+            <a style= "font-size: 24px;" href="#"
+                onclick="return alert('Finish all matches first and set winners')">Next Round</a>
+            {% endif %}
+            {% endif %}
+
+            <br><br>
+            
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Server</th>
+                        <th>Teams</th>
+                        <th>Status</th>
+                        <th>Round</th>
+                        <th>Winner</th>
+                        {% if object.organizer == user %}
+                        <th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+                        {% endif %}
+
+                    </tr>
+                </thead>
+                    {% for match in matches %}
+                    <tr>
+                        {%if match.start_time %}
+                        <td>{{ match.start_time|date:"M d, Y"}}</td>
+                        <td>{{ match.start_time|time }}</td>
+                        {% else %}
+                        {% if object.organizer == user %}
+                        <td>Edit StartDate</td>
+                        <td>Edit StartTime</td>
+                        {% else %}
+                        <td>Wait For orgoizer to provide</td>
+                        <td>&nbsp</td>
+                        {% endif %}
+
+                        {% endif %}
+                        {% if match.server %}
+                        <td><a href="{% url 'server' match.server.id %}">{{ match.server}}</a></td>
+                        {% else %}
+                        {% if object.organizer == user %}
+                        <td><button style = "border: none; padding:0px"class="open-button" onclick="openForm({{forloop.counter}})">select server</button>
+                            <div class="form-popup" id="{{forloop.counter}}">
+                                <form action="{% url 'set_server' object.id match.id %}" class="form-container" method="POST"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <select style="background-color: transparent; color: white;" name="server" id="team_1">
+                                        {% for server in servers %}
+                                        <option value="{{server.id}}">{{ server }}</option>
+                                    
+                                        {% endfor %}
+                                    </select>
+                                    <button style=" width: 30%; "type="submit" class="btn">Enter</button>
+                
+                                </form>
+                            </div></td>
+                        {% else %}
+                        <td>Panding</td>
+                        {% endif %}
+                        {% endif %}
+                        <td><a href="{% url 'team' match.team_1.id %}">{{ match.team_1 }}</a>&nbsp&nbspvs&nbsp&nbsp{% if match.team_2 %}<a
+                            href="{% url 'team' match.team_2.id %}">{{ match.team_2 }}</a> {% else %}
+                        <a href="#">None</a> {% endif %}</td>
+                        <td>{{ match.status }}</td>
+                        <td>{{ match.stage }}</td>
+                        {% if match.winner %}
+                        <td><a href="{% url 'team' match.winner.id %}">{{ match.winner }}</a></td>
+                        {% else %}
+                        <td><button style = "border: none; padding:0px;"class="open-button" onclick="openForm({{match.id}})">Set winner</button>
+                            <div class="form-popup" id="{{ match.id }}">
+                                <form action="{% url 'set_winner' object.id match.id %}" class="form-container" method="POST"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                
+                
+                                    
+                                    <select style="background-color: transparent; color: white;" name="winner" id="team_1">
+                                        {% if match.team_1 %}
+                                        <option value="{{match.team_1.id}}">{{ match.team_1 }}</option>
+                                        {% endif %}
+                                        {% if match.team_2 %}
+                                        <option value="{{match.team_2.id}}">{{ match.team_2 }}</option>
+                                        {% endif %}
+                                    </select>
+                
+                                    <button style=" width: 30%; "type="submit" class="btn">Enter</button>
+                
+                                </form>
+                            </div>
+                        </td>
+                        {% endif %}
+                        {% if object.organizer == user %}
+                        <td><a href="{% url 'tournament_update_match' object.id match.id %}" style="right: 0px;">edit</a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    
+                    <tbody>
+                    </table>
+                </div>
+
+            
+            
+            
+           
+        <br><br><br>
+        {% if object.organizer == user %}
+
+
+        <div class="team-matches">
+
+            <h1 class="bgcolor bg-transparent"
+                style="background:transparent; color:white; letter-spacing: 2px; padding-bottom: 50px;">Your servers
+            </h1>
+            <button class="open-button" onclick="openForm()">Get servers</button>
+
+            <div class="form-popup" id="myForm">
+                <form action="{% url 'get_servers' object.id %}" class="form-container" method="POST"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+
+
+                    
+                    <input type="text" placeholder="No of servers" name="servers" required>
+
+
+                    <button type="submit" class="btn">Enter</button>
+
+                </form>
+            </div>
+            <br><br>
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>Server</th>
+                            <th>State</th>
+                            <th>Cs Status</th>
+                            <th></th>
+                        </tr>
+                        {% for server in object.servers.all %}
+                    </thead>
+                        <tr>
+                            <td>{{ server }}</td>
+                            <td>{{ server.state }}</td>
+                            <td>{{ server.Csstatus }}</td>
+                            <td><a href="{% url 'server' server.id %}">Details</a></td>
+                        <tr>
+                        {% endfor %}
+                        <tbody>
+                        </table>
+                    </div>
+       
+        {% endif %}
+
+    </div>
+    <br><br>
+</div>
+</div>
+<script>
+    function openForm(id = "myForm") {
+        document.getElementById(id).style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById(id).style.display = "none";
+    }
+
+
+</script>
+
+
+{% endblock %}

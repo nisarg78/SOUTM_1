@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Button used to open the contact form - fixed at the bottom of the page */
+    .open-button {
+        background-color:transparent;
+        color: white;
+        padding: 16px 20px;
+
+        cursor: pointer;
+        text-decoration: underline;
+        border: 0.5px solid whitesmoke;
+        position: relative;
+        overflow: hidden;
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        padding: 1rem 3rem;
+        color: white;
+        text-transform: uppercase;
+
+    }.open-button:hover {
+        box-shadow: 1px 1px 25px 10px rgba(250, 250, 250, 0.4);
+    }
+
+
+    .form-popup {
+        display: none;
+        background-color: transparent;
+      
+ 
+        z-index: 9;
+    }
+    h1{
+        background-color: transparent;
+    }
+    b{
+        background-color: transparent;
+    }
+
+    .form-container {
+        display: flex;
+        width: 500px;
+        padding: 10px;
+        background-color: transparent;
+    }
+
+
+    .form-container input[type=text],
+    .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    .form-container .btn {
+
+        background-color: #0A0E26;
+        color: white;
+        padding: 17px 20px;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        height: 100%;
+      
+        opacity: 0.8;
+    }
+
+
+    .form-container .btn:hover,
+    .open-button:hover {
+        opacity: 1;
+    }
+
+    .team-matches a {
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        padding: 1rem 3rem;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .btn {
+        text-decoration: none;
+        border: 0.5px solid whitesmoke;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(250, 250, 250, 0.4);
+    }
+</style>
+<div class="tournament-main">
+    <div class="temp">
+        <div class="tournament-header">
+            <br><br><br>
+            <h1 class="bgcolor bg-transparent">Server: {{ object }}</h1>
+            <h2 class="bgcolor bg-transparent">Server state: {{ object.state }} </h2>
+
+            <h2 class="bgcolor bg-transparent">{% if csstatus == None %}Cs server status: Mainserver not running
+                {% else %}
+                Cs server status: {{ csstatus }}
+                {%endif%} </h2>
+
+            <h2 class="bgcolor bg-transparent">Match assigned: {{ object.is_assigned }} </h2>
+
+            <h2 class="bgcolor bg-transparent">Tournaments:
+                {% if object.tournament_set.all %}
+                {% for i in object.tournament_set.all %}
+                <a style=" background: transparent; color: whitesmoke; " href="{% url 'tournament' i.id %} ">{{ i }}</a>
+                {% endfor %}
+                {% else %}
+                None
+                {% endif %}
+
+            </h2>
+
+
+
+        </div>
+        <div class="team-matches">
+            <br><br>
+            {% if messages %}
+            <h1 class="bgcolor bg-transparent" style="background:transparent; color:white; letter-spacing: 2px;">Messages from server
+            </h1>
+            <br>
+            {% for message in messages %}
+
+            <h2 style="background-color: transparent;">
+            
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+                style="background: transparent; color: white;" role="alert">{{ message }}</div></h2>
+            {% endfor %}
+            {% endif %}
+            <br><br>
+            <h1 class="bgcolor bg-transparent" style="background:transparent; color:white; letter-spacing: 2px;">Action
+            </h1>
+            <br>
+            
+            {% if state == 'stopped' %}
+            <a href="{% url 'server-start' object.id %}" class="btn">Start Server instance</a>
+            <br>
+            {% else %}
+            {% if state == 'running' %}
+            <a href="{% url 'server-stop' object.id %}" class="btn">Stop Server instance</a>
+            <br>
+            {% endif %}
+            {% endif %}
+            {% if state == 'running' %}
+            {% if csstatus == 'STOPPED' %}
+            <a href="{% url 'server-launchcs' object.id %}" class="btn">Start Game instance</a>
+            <br>
+            {% else %}
+            <a href="{% url 'server-stopcs' object.id %}" class="btn">Stop Game instance</a>
+            <br>
+           
+          
+            <button class="open-button" onclick="openForm()">Console Commands</button>
+
+            <div class="form-popup" id="myForm">
+                <form action="{% url 'server-command' object.id %}" class="form-container" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+   
+                    <input type="text" placeholder="Enter Command" name="command" required>
+
+                    <button type="submit" class="btn">Enter</button>
+      
+                </form>
+            </div>
+            {% endif %}
+            {% endif %}
+
+ 
+
+        </div>
+
+    </div>
+    <br><br>
+</div>
+</div>
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,1140 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #0A0E26;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 12vh;
+    background-color: #0A0E26;
+    font-family: 'Poppins', sans-serif;
+    opacity: 1;
+    z-index: 1;
+    position: fixed;
+}
+.nav a{
+    visibility: 0;
+}
+.logo{
+    display: flex;
+    
+    color: rgb(236, 236, 236);
+    letter-spacing: 2px;
+    font-size: 20px;
+
+    align-items: center;
+}
+
+.nav-links{
+    display:flex;
+    justify-content:space-around    ;
+    width: 39%;
+    align-items: center;
+}
+
+.nav-links li{
+    list-style: none;    
+    padding: 5px;
+    
+}
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 13px;
+
+}
+
+.nav-links button{
+    border-radius: 30px;
+    width: 90px;
+    height: 34px;
+    
+}
+.signin{
+    border-radius: 30px;
+    border-color: white;
+    color: white;
+    background-color: #0A0E26;
+    padding: 8px;
+    width: 200px;
+    height: 150px;
+    letter-spacing: 3px;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.signin:hover{
+    border-color: transparent;
+}
+.signup{
+    border-radius: 30px;
+    border: none;
+    color: white;
+    background-image: linear-gradient(to left,#2E76DC,#5AC6AB);
+
+    padding: 8px;
+    width: 200px;
+    height: 150px;
+    letter-spacing: 3px;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.burger{
+    display: none;
+    cursor: pointer;
+    opacity: 1;
+}
+.burger div{
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.5s ease;
+}
+
+@media screen and (max-width:825px){
+    body{
+        overflow-x: hidden;
+    }
+    .logo h5{
+        font-size: 0;
+    }
+    .nav-links{ 
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #0A0E26;  
+        display: flex;      
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+        opacity: 1;
+        z-index: 1;
+    }
+    .hl{
+        display: none;
+    }
+    .nav-links li{
+        opacity: 1;
+    }
+    .burger{
+        display: block;
+        
+    }
+    .infobox{
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+    .h4a{
+        display: flex;
+        align-items: none;
+        flex-direction: column;
+    }
+    .h4a > h4{
+        display: flex;
+    
+    }
+    .tournament-box-items{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 5px;
+    }
+  
+}
+.nav-active{
+    transform: translateX(0%);
+}
+
+.toggle .line1{
+    transform:rotate(-45deg) translate(-5px,5px);
+}
+.toggle .line2{
+    opacity: 0;
+}
+.toggle .line3{
+    transform:rotate(45deg) translate(-5px,-5px);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    background-image: url(../images/background.jpg);
+    background-blend-mode: lighten;
+    background-position: center;
+    background-attachment: fixed;
+    
+    height: 100vh;
+   
+    background-size: cover;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width:100%;
+    height:100%;
+    opacity: 90%;
+    z-index: -1;
+    overflow-y: scroll;
+
+}
+
+.infobox{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width: 60%;
+    color: white;
+    height: 60%;
+    align-items: center;
+    padding: 20px;
+    margin:auto;
+    position: relative;
+    top: 20%;
+    background: rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+
+}
+.infobox h2{
+    background: transparent;
+    letter-spacing: 3px;
+    font-size: 35px;
+
+}c
+.infobox img{
+    background: transparent;
+}
+.h4a{
+    background: transparent;
+    letter-spacing: 3px;
+    align-items: baseline;
+    padding-bottom: 20px;
+}
+.h4a > h4{
+    display: inline;
+    background:none;
+    padding-right: 30px;
+}
+.infobox a{
+    background: transparent;
+    letter-spacing: 3px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    
+}
+.register {
+    position:absolute;
+    top: 70%;
+    background-color:#0A0E26;
+    padding: 10px 24px;
+    border: white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+.register:hover{
+    background: transparent;
+}
+  @media screen and (max-width:360px){
+      .infobox{
+          width: 100%;
+          height: 100%;
+      }
+  }
+
+
+
+/* Tournaments */
+
+tournaments-main{
+    background-image: url(../images/tournaments.jpg);
+    background-blend-mode: lighten;
+    background-position: center;
+    background-attachment: fixed;
+ 
+    background-size: cover;
+    
+    position: absolute;
+    left: 0px;
+    width:100%;
+    height:100%;
+    opacity: 90%;
+    z-index: -1;
+    background-position-y: 80px;
+    padding-top:100px;
+
+    
+
+}
+
+.tournament-container{
+ 
+    width: 98%;
+
+    position: absolute;
+    padding: 15px;
+ 
+    bottom: 10px;
+    z-index: -1;
+    background: rgba(10, 14, 38, 0.3);
+    left:15px;
+    top:110px;
+    overflow-y:scroll;
+    align-items: center;
+ 
+    
+    
+
+}
+.tournaments-status{
+    color:white;
+    padding:10px;
+  
+    font-family: 'Poppins', sans-serif;
+    background: transparent;
+    font-size: 25px;
+
+    align-items: center;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    
+}
+.orgo{
+  height: 100px;
+  width: 98%;
+  position: absolute;
+  
+  background:transparent;
+}
+.orgo a{
+  position:absolute;
+  right:50px;
+  text-decoration: none;
+  background: transparent;
+  color:white;
+  font-size: 20px;
+}
+.tournaments-status a{
+    position: absolute;
+    top:60px;
+    right: 10px;
+    font-family: 'Poppins', sans-serif;
+    background:transparent;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 2px;
+
+
+}
+.tournaments-status h3{
+    background: transparent;
+    padding-top:80px;
+    padding-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+}
+
+.tournament-box{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: 'Poppins',sans-serif;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10, 14, 38, 0.6);
+}
+.tournament-box-items{
+    display: flex;
+    background: transparent;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+.tournament-box-items li{
+    color: white;
+    font-family: 'Poppins',sans-serif;
+    background: transparent;
+    list-style: none;
+    letter-spacing: 1px;
+
+}
+.tournament-box-items a{
+    color: white;
+}
+
+.cards{
+    display: inline-flex;
+    flex-direction: row;
+    height:  300px;
+    width: 100px;
+    justify-content: space-around;
+    background: transparent;
+   
+  
+   
+    
+}
+
+
+
+/* Team */
+team-main{
+    background-image: url(../images/background.jpg);
+    background-blend-mode: lighten;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+    height: 85%;
+    width: 98%;
+    background-size: cover;
+    
+    position: absolute;
+    left: 0px;
+    width:100%;
+    height:100%;
+    z-index: -1;
+    background-position-y: 30px;
+    padding: 15px;
+    padding-top: 85px;
+    overflow-y: scroll;
+}
+
+.team-container{
+    height: 85%;
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:15%;
+    bottom: 10px;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: scroll;
+    padding-top: 20%;
+}
+
+.team-members{
+    background: transparent;
+    display: flex;
+    align-items: center;
+   
+    justify-content: space-around;
+    width: 90%;
+    height: 100vh;
+    }
+.team-members img{
+    height: 200px;
+    width: 200px;
+   
+}
+.team-member{
+    background: transparent;
+    flex-wrap: nowrap;
+   
+    height: 400px;
+    width: 300px;
+}
+
+
+.team-matches{
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    justify-content: space-around;
+    width: 90%;
+  
+}
+.match{
+    display: inline-flex;
+    background: transparent;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 99%;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 25px;
+    overflow-x: scroll;
+    
+    
+}
+.hr{
+    border-top: 8px solid #bbb;
+    border-radius: 5px;
+  }
+
+.team-matches a{
+  color:white;
+  font-size: 16px;
+  background: transparent;
+  text-decoration: underline;
+  padding: none;
+
+} 
+.match li{
+    
+    color: white;
+    font-family: 'Poppins',sans-serif;
+    background: transparent;
+    list-style: none;
+    letter-spacing: 2px;
+    width: 30%;
+    text-align: center;
+    border-right: solid #0A0E26;
+  
+    
+
+}
+.match a{color: white;
+    font-family: 'Poppins',sans-serif;
+    background: transparent;
+    font-size: 16px;
+    letter-spacing: 2px;
+    width: 10%;
+    padding: none;
+
+
+}
+
+
+
+
+/* tournament page */
+
+
+.tournament-main{
+    background-image: url(../images/tournaments.jpg);
+    background-blend-mode: lighten;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
+    height: 90%;
+    width: 100%;
+    background-size: cover;
+    
+    position: absolute;
+    top:100px;
+    z-index: -1;
+    background-position-y: 30px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.tournament-main img{
+    height: 150px;
+    width: 150px;
+    background: transparent;
+
+    
+}
+.temp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: flex-start;
+    background: rgba(10, 14, 38, 0.4);
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+
+}
+.tournament-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: flex-start;
+    background: transparent;
+    height: 70%;
+    width: 100%;
+}
+.tournament-header .register{
+    position:inherit;
+    top: 70%;
+    background-color:#0A0E26;
+    padding: 10px 24px;
+    border: white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.5
+}
+
+.tournament-header .register:hover{
+    background: transparent;
+}
+.tournament-header .bgcolor {
+    padding-bottom: 20px;
+    color:white;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 50%;
+    background: transparent;
+    overflow-wrap: break-word;
+  }
+.banner{
+    padding-left: 0px;
+    padding-right: 0px;
+
+    background: transparent;
+
+}
+.banner img{
+    height: 628px;
+    width: 1200px;
+   
+}
+
+   .csslider {
+    -moz-perspective: 1300px;
+    -ms-perspective: 1300px;
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    margin-bottom: 22px;
+    background: transparent;
+  }
+  .csslider > input {
+    display: none;
+  }
+  .csslider > input:nth-of-type(10):checked ~ ul li:first-of-type {
+    margin-left: -900%;
+  }
+  .csslider > input:nth-of-type(9):checked ~ ul li:first-of-type {
+    margin-left: -800%;
+  }
+  .csslider > input:nth-of-type(8):checked ~ ul li:first-of-type {
+    margin-left: -700%;
+  }
+  .csslider > input:nth-of-type(7):checked ~ ul li:first-of-type {
+    margin-left: -600%;
+  }
+  .csslider > input:nth-of-type(6):checked ~ ul li:first-of-type {
+    margin-left: -500%;
+  }
+  .csslider > input:nth-of-type(5):checked ~ ul li:first-of-type {
+    margin-left: -400%;
+  }
+  .csslider > input:nth-of-type(4):checked ~ ul li:first-of-type {
+    margin-left: -300%;
+  }
+  .csslider > input:nth-of-type(3):checked ~ ul li:first-of-type {
+    margin-left: -200%;
+  }
+  .csslider > input:nth-of-type(2):checked ~ ul li:first-of-type {
+    margin-left: -100%;
+  }
+  .csslider > input:nth-of-type(1):checked ~ ul li:first-of-type {
+    margin-left: 0%;
+  }
+  .csslider > ul {
+    position: relative;
+    width: 820px;
+    height: 470px;
+    z-index: 1;
+    font-size: 0;
+    line-height: 0;
+    background: transparent;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .csslider > ul > li {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  
+    align-items: center;
+    justify-content: space-around;
+    font-size: initial;
+  
+    -moz-transition: all 0.5s cubic-bezier(0.4, 1.3, 0.65, 1);
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s cubic-bezier(0.4, 1.3, 0.65, 1);
+    transition: all 0.5s cubic-bezier(0.4, 1.3, 0.65, 1);
+    vertical-align: top;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    white-space: normal;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .csslider h2{
+    background: transparent;
+    letter-spacing: 3px;
+    font-size: 35px;
+  
+  }
+ 
+  .csslider img{
+    background: transparent;
+  }
+  .h4a{
+    background: transparent;
+    letter-spacing: 3px;
+    align-items: baseline;
+    font-size: 15px;
+
+  
+  }
+  .h4a > h4{
+  
+    display: inline;
+    background:none;
+    padding-right: 30px;
+    color: white;
+  }
+  .csslider a{
+    background: transparent;
+    letter-spacing: 3px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    
+  }
+  .register {
+    position:absolute;
+    top: 370px;
+    background-color:#0A0E26;
+    padding: 10px 24px;
+    border: white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .register:hover{
+    background: transparent;
+  }
+  @media screen and (max-width:360px){
+      .infobox{
+          width: 100%;
+          height: 100%;
+      }
+  }
+  .csslider > .navigation {
+    position: absolute;
+    background: transparent;
+    bottom: -8px;
+    left: 50%;
+    z-index: 10;
+    margin-bottom: -10px;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .csslider > .navigation > div {
+    margin-left: -100%;
+    background: transparent;
+  }
+  .csslider > .navigation label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 0 4px;
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.3)
+  }
+  .csslider > .navigation label:hover:after {
+    opacity: 1;
+  }
+  .csslider > .navigation label:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -6px;
+    margin-top: -6px;
+    background: white;
+    border-radius: 50%;
+    padding: 6px;
+    opacity: 0;
+  }
+  .csslider > .arrows {
+    background: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .csslider.inside .navigation {
+    bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .csslider.inside .navigation label {
+    border: 1px solid #7e7e7e;
+  }
+  .csslider > input:nth-of-type(1):checked ~ .navigation label:nth-of-type(1):after,
+  .csslider > input:nth-of-type(2):checked ~ .navigation label:nth-of-type(2):after,
+  .csslider > input:nth-of-type(3):checked ~ .navigation label:nth-of-type(3):after,
+  .csslider > input:nth-of-type(4):checked ~ .navigation label:nth-of-type(4):after,
+  .csslider > input:nth-of-type(5):checked ~ .navigation label:nth-of-type(5):after,
+  .csslider > input:nth-of-type(6):checked ~ .navigation label:nth-of-type(6):after,
+  .csslider > input:nth-of-type(7):checked ~ .navigation label:nth-of-type(7):after,
+  .csslider > input:nth-of-type(8):checked ~ .navigation label:nth-of-type(8):after,
+  .csslider > input:nth-of-type(9):checked ~ .navigation label:nth-of-type(9):after,
+  .csslider > input:nth-of-type(10):checked ~ .navigation label:nth-of-type(10):after,
+  .csslider > input:nth-of-type(11):checked ~ .navigation label:nth-of-type(11):after {
+    opacity: 1;
+  }
+  .csslider > .arrows {
+    position: absolute;
+    left: -31px;
+    top: 50%;
+    width: 100%;
+    height: 26px;
+    padding: 0 31px;
+    z-index: 0;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+  .csslider > .arrows label {
+    display: none;
+    position: absolute;
+    top: -50%;
+    padding: 13px;
+    box-shadow: inset 2px -2px 0 1px white;
+    cursor: pointer;
+    -moz-transition: box-shadow 0.15s, margin 0.15s;
+    -o-transition: box-shadow 0.15s, margin 0.15s;
+    -webkit-transition: box-shadow 0.15s, margin 0.15s;
+    transition: box-shadow 0.15s, margin 0.15s;
+  }
+  .csslider > .arrows label:hover {
+    box-shadow: inset 3px -3px 0 2px whitesmoke;
+    margin: 0 0px;
+  }
+  .csslider > .arrows label:before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    height: 300%;
+    width: 300%;
+  }
+  .csslider.infinity > input:first-of-type:checked ~ .arrows label.goto-last,
+  .csslider > input:nth-of-type(1):checked ~ .arrows > label:nth-of-type(0),
+  .csslider > input:nth-of-type(2):checked ~ .arrows > label:nth-of-type(1),
+  .csslider > input:nth-of-type(3):checked ~ .arrows > label:nth-of-type(2),
+  .csslider > input:nth-of-type(4):checked ~ .arrows > label:nth-of-type(3),
+  .csslider > input:nth-of-type(5):checked ~ .arrows > label:nth-of-type(4),
+  .csslider > input:nth-of-type(6):checked ~ .arrows > label:nth-of-type(5),
+  .csslider > input:nth-of-type(7):checked ~ .arrows > label:nth-of-type(6),
+  .csslider > input:nth-of-type(8):checked ~ .arrows > label:nth-of-type(7),
+  .csslider > input:nth-of-type(9):checked ~ .arrows > label:nth-of-type(8),
+  .csslider > input:nth-of-type(10):checked ~ .arrows > label:nth-of-type(9),
+  .csslider > input:nth-of-type(11):checked ~ .arrows > label:nth-of-type(10) {
+    display: block;
+    left: 0;
+    right: auto;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .csslider.infinity > input:last-of-type:checked ~ .arrows label.goto-first,
+  .csslider > input:nth-of-type(1):checked ~ .arrows > label:nth-of-type(2),
+  .csslider > input:nth-of-type(2):checked ~ .arrows > label:nth-of-type(3),
+  .csslider > input:nth-of-type(3):checked ~ .arrows > label:nth-of-type(4),
+  .csslider > input:nth-of-type(4):checked ~ .arrows > label:nth-of-type(5),
+  .csslider > input:nth-of-type(5):checked ~ .arrows > label:nth-of-type(6),
+  .csslider > input:nth-of-type(6):checked ~ .arrows > label:nth-of-type(7),
+  .csslider > input:nth-of-type(7):checked ~ .arrows > label:nth-of-type(8),
+  .csslider > input:nth-of-type(8):checked ~ .arrows > label:nth-of-type(9),
+  .csslider > input:nth-of-type(9):checked ~ .arrows > label:nth-of-type(10),
+  .csslider > input:nth-of-type(10):checked ~ .arrows > label:nth-of-type(11),
+  .csslider > input:nth-of-type(11):checked ~ .arrows > label:nth-of-type(12) {
+    display: block;
+    right: 0;
+    left: auto;
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
+  /*#region MODULES */
+  /*#endregion */
+  
+  ::-webkit-scrollbar {
+    width: 2px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  ul,
+  ol {
+    padding-left: 40px;
+  }
+  
+  
+  
+  #center {
+    text-align: center;
+    margin-top: 25%;
+  }
+
+
+  
+  a {
+    text-decoration: none;
+}
+
+.card-list {
+    display: flex;
+    padding: 3rem;
+    overflow-x: scroll;
+    background: transparent;
+    padding-left: 150px;
+  
+}
+
+h3{
+  background: transparent;
+  
+}
+.card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+}
+.card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+.card-list::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#17141d 0,#17141d);
+}
+
+
+.card {
+    height: 390px;
+    width: 300px;
+    min-width: 250px;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: #0A0E26;
+    box-shadow: -1rem 0 3rem #000;
+    display: flex;
+    flex-direction: column;
+    transition: .2s;
+    margin: 0;
+    scroll-snap-align: start;
+    clear: both;
+    position: relative;
+    
+}
+
+.card:focus-within~.card, .card:hover~.card {
+    transform: translateX(130px);
+}
+
+.card:hover {
+    transform: translateY(-1rem);
+}
+
+.card:not(:first-child) {
+    margin-left: -130px;
+}
+
+
+.card-header {
+    margin-bottom: auto;
+    background: transparent;
+}
+
+.card-header p {
+    font-size: 14px;
+    margin: 0 0 1rem;
+    color: #7a7a8c;
+    background: transparent;
+}
+
+.card-header h2 {
+    font-size: 20px;
+    margin: .25rem 0 auto;
+    text-decoration: none;
+    color: inherit;
+    border: 0;
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+}
+
+.card-header h2:hover {
+    background: linear-gradient(90deg,#2E76DC,#5AC6AB);
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.card-author {
+    margin: 3rem 0 0;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    position: relative;
+    background: transparent;
+}
+
+.author-avatar {
+    grid-area: auto;
+    align-self: start;
+    position: relative;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.author-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    filter: grayscale(100%);
+    display: block;
+    overflow: hidden;
+    margin: 16px 10px;
+    background: transparent;
+}
+
+.author-name {
+    grid-area: auto;
+    box-sizing: border-box;
+    background: transparent;
+    color: white;
+}
+
+.author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    background: transparent;
+    color: #7a7a8c;
+}
+
+.half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    pointer-events: none;
+    background: transparent;
+}
+
+.tags {
+    margin: 1rem 0 2rem;
+    padding: .5rem 0 1rem;
+    line-height: 2;
+    margin-bottom: 0;
+    background: transparent;
+}
+
+.tags a {
+    font-style: normal;
+    font-weight: 700;
+    font-size: .5rem;
+    color: #7a7a8c;
+    text-transform: uppercase;
+    font-size: .66rem;
+    border: 3px solid #28242f;
+    border-radius: 2rem;
+    padding: .2rem .85rem .25rem;
+    position: relative;
+    background: transparent;
+}
+
+.tags a:hover {
+    background: linear-gradient(90deg,#2E76DC,#5AC6AB);
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    background-clip: text;
+    border-color: white;
+}
+
+
