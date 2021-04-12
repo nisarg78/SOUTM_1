@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background: transparent;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+  background: transparent;
+}
+h1{
+
+  background-color: transparent;
+  font-family: sans-serif;
+
+}
+form{background: transparent;padding-top:280px;
+width: 50%;}
+label{background: transparent;}
+input#id_logo{background: transparent;}
+option{background: transparent;}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+
+}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="container">
+
+  <form method = "POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>New Team</h1>
+    <br>
+    {{ form|linebreaksbr }}
+    <select style="background-color: transparent; color: white;" name="player_1" id="player_1">
+      {% for player in players %}
+      <option value="{{player.id}}">{{ player }}</option>
+      {% endfor %}
+  </select>
+    
+    <input type="submit" class = "button register" style = "position: inherit; background-color:#0A0E26;"value="Next">
+  </form>
+</div>
+
+{% endblock %}

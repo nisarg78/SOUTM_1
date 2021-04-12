@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<tournaments-main>
+  <div class="tournament-container">
+    <div class="orgo">
+      {% if user.is_organizer %}
+      {% if Hosted %}
+      <a href="{% url 'tournament' tourna_id %}">Your tournament&gt;</a>
+      {% else %}
+      
+      <a href="/tournament/new"">Register your tournament&gt;</a>
+      {% endif %}
+      {% endif %}
+
+  </div>
+  <br>
+    <h3 style="color:white; position: absolute; left: 220px; text-decoration: none; font-size: 30px;">Found {{object_list|length}} result</h3>
+    <br><br>
+    <section class="card-list">
+        {% if object_list|length == 0 %}
+        <h3 style="color:white; position: absolute; left: 220px; text-decoration: none; font-size: 30px;">There is no such tournament</h3>
+        {% else %}
+      {% for tournament in object_list %}
+      <article class="card">
+        <header class="card-header">
+          <br>
+          <h2>{{tournament.name}}</h2>
+          <br>
+          <br>
+          
+          
+          <p>Registration Started&nbsp;:&nbsp;{{tournament.registration_starts}}</p>
+          <p>Registration Ends&nbsp;:&nbsp;{{tournament.registration_ends}}</p>
+        </header>
+
+        <div class="card-author">
+          <a class="author-avatar" href="#">
+            <img src="{{ tournament.logo.url }}" />
+          </a>
+        
+
+          <div class="author-name">
+            <div class="author-name-prefix">Orgonized by:</div>
+            {{tournament.organizer}}
+          </div>
+        </div>
+        <div class="tags">
+          <a href=" {% url 'tournament' tournament.id %}">Details</a>
+          {% if user.is_authenticated %}
+          <a href="/register/">Register</a>
+          {% else %}
+          <a href="/login/">Register</a>
+          {% endif %}
+          
+        </div>
+      </article>
+
+      {% endfor %}
+      {% endif %}
+     
+    </section>
+    
+  </div>
+
+</tournaments-main>
+
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="tournament-main">
+    <div class="temp">
+        <div class="tournament-header">
+           
+            <br>
+           <br><br>
+            <br><br><br><br><br><br><br><br><br><br>
+            <img src=" {{ object.dp.url }}" alt="">
+                <br>
+                <h1 class="bgcolor bg-transparent">Name: {{ object }}</h1>
+                <p class="bgcolor bg-transparent">InGame Name: {{ object.ign}} </p>
+              
+                <p class="bgcolor bg-transparent">Number of Team registered: {{ teams|length}}</p>
+                
+
+               
+        </div>
+        <br><br><br><br><br>
+        
+        <br>
+        <br><br><br>
+        <div class="team-matches">
+
+            <h1 class="bgcolor bg-transparent"
+                style="background:transparent; color:white; letter-spacing: 2px; padding-bottom: 50px;">Your Teams</h1>
+            <div class="match">
+                <li>Team Name</li>
+                <li>Tag</li>
+                <li style="border: none;"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</li>
+                <li style="border: none;"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</li>
+                <li style="border: none;">Players</li>
+                <li style="border: none;"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</li>
+                <li style="border: none;"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</li>
+                
+          
+
+            </div>
+            {%for team in teams %}
+            <div class="match">
+                <li><a href="{%url 'team' team.id %}">{{ team.name }}</a></li>
+                <li>{{ team.tag }}</li>
+                {%for player in team.players.all %}
+                <li><a href="{%url 'user' player.id %}">{{ player }}</a></li>
+                {% endfor %}
+               
+
+            </div>
+            {% endfor %}
+            {% if user == object %}
+            <br>
+            <a href = '/team/new' style="position: inherit;" class="button register">Add team</a>
+            
+            {% endif %}
+        </div>
+        <br><br><br><br><br>
+        {% if user.is_organizer %}
+        <div class="team-matches">
+
+            <h1 class="bgcolor bg-transparent"
+                style="background:transparent; color:white; letter-spacing: 2px; padding-bottom: 50px;">Your Tournaments</h1>
+            <div class="match">
+                <li>Name</li>
+                <li>Teams</li>
+
+                <li>Prizepool</li>
+
+                <li>game</li>
+                
+                <li>winner</li>
+               
+
+            </div>
+            {%for tournament in user.tournament_set.all %}
+            <div class="match">
+                <li><a href="{% url 'tournament' tournament.id %}">{{ tournament.name}}</a></li>
+                <li>{{ tournament.teams|length}}</li>
+                <li>{{ tournament.prizepool}}</li>
+                <li>{{ tournament.game}}</li>
+                
+                <li>{{ tournament.winner }}</li>
+
+            </div>
+            {% endfor %}
+        </div>
+        <br><br><br><br><br>
+        {% endif %}
+        
+        <div class="team-matches">
+
+            <h1 class="bgcolor bg-transparent"
+                style="background:transparent; color:white; letter-spacing: 2px; padding-bottom: 50px;">Your Matches</h1>
+            <div class="match">
+                <li>Date</li>
+                <li>Time</li>
+
+                <li>Teams</li>
+
+                <li>Winner</li>
+
+            </div>
+            {%for match in matches %}
+            <div class="match">
+                <li>{{ match.start_time|date:"M d, Y"}}</li>
+                <li>{{ match.start_time|time }}</li>
+
+                <li><a href="{% url 'team' match.team_1.id %}">{{ match.team_1 }}</a> vs {% if match.team_2 %}<a
+                    href="{% url 'team' match.team_2.id %}">{{ match.team_2 }}</a> {% else %} <li><a href="#">{{ match.team_1 }}</a> {% endif %}</li>
+                <li>{{ match.winner }}</li>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br><br>
+</div>
+</div>
+
+{% endblock %}
